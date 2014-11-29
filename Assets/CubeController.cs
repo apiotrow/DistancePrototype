@@ -22,21 +22,21 @@ public class CubeController: Photon.MonoBehaviour {
 		if (!photonView.isMine)
 		{
 			if(this.GetComponent<Rigidbody>() != null){
-				//Destroy(rigidbody);
+				this.GetComponent<Rigidbody>().useGravity = false;
 			}
 			//transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5);
 			//transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5);
 			transform.localPosition = Vector3.Lerp (transform.localPosition,
-			                                        Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5),
+			                                        Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 1),
 			                                        interpolationConstant);
 			transform.localRotation = Quaternion.Slerp (transform.localRotation,
-			                                            Quaternion.Slerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5),
+			                                            Quaternion.Slerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 1),
 			                                            interpolationConstant);
 			rigidbody.velocity = Vector3.Lerp (rigidbody.velocity,
-			                                   Vector3.Lerp (rigidbody.velocity, this.correctPlayerVel, Time.deltaTime * 5),
+			                                   Vector3.Lerp (rigidbody.velocity, this.correctPlayerVel, Time.deltaTime * 1),
 			                                   interpolationConstant);
 			rigidbody.angularVelocity = Vector3.Lerp (rigidbody.angularVelocity,
-			                                          Vector3.Lerp (rigidbody.angularVelocity, this.correctPlayerAngVel, Time.deltaTime * 5),
+			                                          Vector3.Lerp (rigidbody.angularVelocity, this.correctPlayerAngVel, Time.deltaTime * 1),
 			                                          interpolationConstant);
 		}
 	}
