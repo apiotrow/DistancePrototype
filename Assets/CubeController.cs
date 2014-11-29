@@ -19,7 +19,7 @@ public class CubeController: Photon.MonoBehaviour {
 		if (!photonView.isMine)
 		{
 			transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5);
-			transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5);
+			//transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5);
 		}
 	}
 	
@@ -29,7 +29,7 @@ public class CubeController: Photon.MonoBehaviour {
 		{
 			// We own this player: send the others our data
 			stream.SendNext(transform.position);
-			stream.SendNext(transform.rotation);
+			//stream.SendNext(transform.rotation);
 			
 
 		}
@@ -37,7 +37,7 @@ public class CubeController: Photon.MonoBehaviour {
 		{
 			// Network player, receive data
 			this.correctPlayerPos = (Vector3)stream.ReceiveNext();
-			this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
+			//this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
 			
 
 		}
