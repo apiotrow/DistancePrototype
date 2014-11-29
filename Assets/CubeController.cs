@@ -9,6 +9,7 @@ public class CubeController: Photon.MonoBehaviour {
 	private Vector3 correctPlayerAngVel = Vector3.zero;
 	PhotonView pv;
 	private float interpolationConstant = 0.1f;
+	float timeDeltaMultiplier = 20f;
 
 
 	void Start(){
@@ -27,16 +28,16 @@ public class CubeController: Photon.MonoBehaviour {
 			//transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5);
 			//transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5);
 			transform.localPosition = Vector3.Lerp (transform.localPosition,
-			                                        Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 1),
+			                                        Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * timeDeltaMultiplier),
 			                                        interpolationConstant);
 			transform.localRotation = Quaternion.Slerp (transform.localRotation,
-			                                            Quaternion.Slerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 1),
+			                                            Quaternion.Slerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * timeDeltaMultiplier),
 			                                            interpolationConstant);
 			rigidbody.velocity = Vector3.Lerp (rigidbody.velocity,
-			                                   Vector3.Lerp (rigidbody.velocity, this.correctPlayerVel, Time.deltaTime * 1),
+			                                   Vector3.Lerp (rigidbody.velocity, this.correctPlayerVel, Time.deltaTime * timeDeltaMultiplier),
 			                                   interpolationConstant);
 			rigidbody.angularVelocity = Vector3.Lerp (rigidbody.angularVelocity,
-			                                          Vector3.Lerp (rigidbody.angularVelocity, this.correctPlayerAngVel, Time.deltaTime * 1),
+			                                          Vector3.Lerp (rigidbody.angularVelocity, this.correctPlayerAngVel, Time.deltaTime * timeDeltaMultiplier),
 			                                          interpolationConstant);
 		}
 	}
