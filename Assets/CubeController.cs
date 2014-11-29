@@ -5,7 +5,10 @@ public class CubeController: Photon.MonoBehaviour {
 	
 	private Vector3 correctPlayerPos = Vector3.zero; // We lerp towards this
 	private Quaternion correctPlayerRot = Quaternion.identity; // We lerp towards this
+	private Vector3 correctPlayerVel = Vector3.zero;
+	private Vector3 correctPlayerAngVel = Vector3.zero;
 	PhotonView pv;
+	private float interpolationConstant = 0.1f;
 
 
 	void Start(){
@@ -18,8 +21,20 @@ public class CubeController: Photon.MonoBehaviour {
 
 		if (!photonView.isMine)
 		{
-			transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5);
+			//transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5);
 			//transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5);
+			transform.localPosition = Vector3.Lerp (transform.localPosition,
+			                                        Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5),
+			                                        interpolationConstant);
+			transform.localRotation = Quaternion.Slerp (transform.localRotation,
+			                                            Quaternion.Slerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5),
+			                                            interpolationConstant);
+			rigidbody.velocity = Vector3.Lerp (rigidbody.velocity,
+			                                   Vector3.Lerp (rigidbody.velocity, this.correctPlayerVel, Time.deltaTime * 5),
+			                                   interpolationConstant);
+			rigidbody.angularVelocity = Vector3.Lerp (rigidbody.angularVelocity,
+			                                          Vector3.Lerp (rigidbody.angularVelocity, this.correctPlayerAngVel, Time.deltaTime * 5),
+			                                          interpolationConstant);
 		}
 	}
 	
@@ -29,7 +44,10 @@ public class CubeController: Photon.MonoBehaviour {
 		{
 			// We own this player: send the others our data
 			stream.SendNext(transform.position);
-			//stream.SendNext(transform.rotation);
+			stream.SendNext(transform.rotation);
+
+			stream.SendNext(rigidbody.velocity);
+			stream.SendNext(rigidbody.angularVelocity);
 			
 
 		}
@@ -37,9 +55,9 @@ public class CubeController: Photon.MonoBehaviour {
 		{
 			// Network player, receive data
 			this.correctPlayerPos = (Vector3)stream.ReceiveNext();
-			//this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
-			
-
+			this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
+			this.correctPlayerVel = (Vector3)stream.ReceiveNext();
+			this.correctPlayerAngVel = (Vector3)stream.ReceiveNext();
 		}
 	}
 }
