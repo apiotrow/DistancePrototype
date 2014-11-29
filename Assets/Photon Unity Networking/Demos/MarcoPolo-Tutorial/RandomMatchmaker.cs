@@ -22,8 +22,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour
     }
 
 	void OnCreatedRoom(){
-		GameObject block = PhotonNetwork.Instantiate("Cube", new Vector3(0f, 3f, 0f), Quaternion.identity, 0);
-		myPhotonView = block.GetComponent<PhotonView>();
+		GameObject block = PhotonNetwork.InstantiateSceneObject("Cube", new Vector3(0f, 3f, 0f), Quaternion.identity, 0, null);
+		//myPhotonView = block.GetComponent<PhotonView>();
 	}
 
     void OnJoinedRoom()
