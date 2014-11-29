@@ -149,9 +149,16 @@
      <None Include="Assets\Photon Unity Networking\Demos\DemoPickup\Assets\3dFont\3dText.shader" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>/Users/aaronpiotrowski/DistancePrototype/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
  <Reference Include="Photon3Unity3D">
  <HintPath>/Users/aaronpiotrowski/DistancePrototype/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{65030C2F-B873-B3B5-9EB1-49EF81431716}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
