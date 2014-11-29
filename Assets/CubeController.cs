@@ -21,6 +21,9 @@ public class CubeController: Photon.MonoBehaviour {
 
 		if (!photonView.isMine)
 		{
+			if(this.GetComponent<Rigidbody>() != null){
+				Destroy(rigidbody);
+			}
 			//transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5);
 			//transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5);
 			transform.localPosition = Vector3.Lerp (transform.localPosition,
