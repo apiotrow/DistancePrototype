@@ -41,6 +41,7 @@
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_OSX
 'Assets/CreateCubeOnStart.cs'
+'Assets/CubeController.cs'
 'Assets/DemoVikings/Demo/Assets/AnimationController.cs'
 'Assets/DemoVikings/Demo/Assets/CloseCameraFade.cs'
 'Assets/DemoVikings/Demo/Assets/Label/Label.cs'

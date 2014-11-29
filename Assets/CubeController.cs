@@ -5,9 +5,17 @@ public class CubeController: Photon.MonoBehaviour {
 	
 	private Vector3 correctPlayerPos = Vector3.zero; // We lerp towards this
 	private Quaternion correctPlayerRot = Quaternion.identity; // We lerp towards this
-	// Update is called once per frame
+	PhotonView pv;
+
+
+	void Start(){
+		pv = GetComponent<PhotonView>();
+	}
+
 	void Update()
 	{
+
+
 		if (!photonView.isMine)
 		{
 			transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5);
