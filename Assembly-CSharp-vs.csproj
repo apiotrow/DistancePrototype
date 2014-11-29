@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CreateCubeOnStart.cs" />
+     <Compile Include="Assets\CubeController.cs" />
      <Compile Include="Assets\DemoVikings\Demo\Assets\AnimationController.cs" />
      <Compile Include="Assets\DemoVikings\Demo\Assets\CloseCameraFade.cs" />
      <Compile Include="Assets\DemoVikings\Demo\Assets\Label\Label.cs" />
