@@ -3,48 +3,35 @@ using System.Collections;
 
 public class CubeController: Photon.MonoBehaviour {
 	
-	Vector3 realPosition = Vector3.zero;
-	Quaternion realRotation = Quaternion.identity;
-	
-	
-	bool gotFirstUpdate = false;
-	
-	// Use this for initialization
-	void Start () {
-	}
-	
+	private Vector3 correctPlayerPos = Vector3.zero; // We lerp towards this
+	private Quaternion correctPlayerRot = Quaternion.identity; // We lerp towards this
 	// Update is called once per frame
-	void Update () {
-		if( photonView.isMine ) {
-			// Do nothing
-		}
-		else {
-			transform.position = Vector3.Lerp(transform.position, realPosition, 0.1f);
-			transform.rotation = Quaternion.Lerp(transform.rotation, realRotation, 0.1f);
+	void Update()
+	{
+		if (!photonView.isMine)
+		{
+			transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 5);
+			transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 5);
 		}
 	}
 	
-	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-		
-		if(stream.isWriting) {
-			
+	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
+		if (stream.isWriting)
+		{
+			// We own this player: send the others our data
 			stream.SendNext(transform.position);
 			stream.SendNext(transform.rotation);
 			
+
 		}
-		else {
+		else
+		{
+			// Network player, receive data
+			this.correctPlayerPos = (Vector3)stream.ReceiveNext();
+			this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
 			
-			realPosition = (Vector3)stream.ReceiveNext();
-			realRotation = (Quaternion)stream.ReceiveNext();
-			
-			
-			if(gotFirstUpdate == false) {
-				transform.position = realPosition;
-				transform.rotation = realRotation;
-				gotFirstUpdate = true;
-			}
-			
+
 		}
-		
 	}
 }
