@@ -13,7 +13,7 @@ public class GameManagerVik : Photon.MonoBehaviour {
     }
 
 	void OnCreatedRoom(){
-		GameObject demon = PhotonNetwork.InstantiateSceneObject("demon", new Vector3(51f, 5f, 49f), Quaternion.identity, 0, null);
+		GameObject demon = PhotonNetwork.InstantiateSceneObject("demon", new Vector3(-179f, 145f, -652f), Quaternion.identity, 0, null);
 		//myPhotonView = block.GetComponent<PhotonView>();
 	}
     
