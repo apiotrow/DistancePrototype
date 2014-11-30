@@ -6,7 +6,7 @@ SubstanceImporter:
   - serializedVersion: 12
     name: CaveWorm
     prototypeName: CaveWorm
-    shader: {fileID: 4, guid: 0000000000000000f000000000000000, type: 0}
+    shader: {fileID: 4800000, guid: f31d0868044d76042af4ef5a70df2a96, type: 3}
     inputs:
     - name: BaseColor
       value:
@@ -158,18 +158,15 @@ SubstanceImporter:
             texture: {instanceID: 0}
             scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _BumpMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
       floats:
         data:
           first:
             name: _Shininess
           second: .220354751
+        data:
+          first:
+            name: _Outline
+          second: .00499999989
       colors:
         data:
           first:
@@ -179,6 +176,10 @@ SubstanceImporter:
           first:
             name: _SpecColor
           second: {r: .5, g: .5, b: .5, a: 1}
+        data:
+          first:
+            name: _OutlineColor
+          second: {r: 0, g: 0, b: 0, a: 1}
     textureParameters:
     - name: CaveWorm_diffuse
       alphaSource: 5
@@ -195,10 +196,6 @@ SubstanceImporter:
         name: _MainTex
       material: {instanceID: 0}
       baseUID: 3701651327
-    - shaderProp:
-        name: _BumpMap
-      material: {instanceID: 0}
-      baseUID: 3701651325
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
