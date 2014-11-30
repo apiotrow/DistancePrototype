@@ -11,6 +11,11 @@ public class GameManagerVik : Photon.MonoBehaviour {
     {
         StartGame();
     }
+
+	void OnCreatedRoom(){
+		GameObject ball = PhotonNetwork.InstantiateSceneObject("Sphere", new Vector3(51f, 5f, 49f), Quaternion.identity, 0, null);
+		//myPhotonView = block.GetComponent<PhotonView>();
+	}
     
     IEnumerator OnLeftRoom()
     {
