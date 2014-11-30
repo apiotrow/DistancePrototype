@@ -64,6 +64,7 @@
      <None Include="Assets\DemoVikings\Demo\READ ME FIRST.txt" />
      <None Include="Assets\DemoVikings\Demo\Shaders\NewShader.shader" />
      <None Include="Assets\Plugins\release_history.txt" />
+     <None Include="Assets\Alien\ALien Info.txt" />
      <None Include="Assets\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />
      <None Include="Assets\Photon Unity Networking\Demos\DemoPickup\Assets\3dFont\3dText.shader" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
