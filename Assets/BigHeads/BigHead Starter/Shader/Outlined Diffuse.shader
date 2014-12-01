@@ -59,6 +59,7 @@ ENDCG
 		Pass {
 			Name "OUTLINE"
 			Tags { "LightMode" = "Always" }
+			Fog { Mode Off }
 			Cull Front
 			ZWrite On
 			ColorMask RGB

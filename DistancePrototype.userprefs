@@ -5,10 +5,9 @@
       <File FileName="Assets/Photon Unity Networking/Plugins/PhotonNetwork/PhotonNetwork.cs" Line="1" Column="1" />
       <File FileName="Assets/CubeController.cs" Line="1" Column="1" />
       <File FileName="Assets/Photon Unity Networking/Demos/MarcoPolo-Tutorial/NetworkCharacter.cs" Line="1" Column="1" />
-      <File FileName="Assets/DemoVikings/Scripts/GameManagerVik.cs" Line="16" Column="80" />
+      <File FileName="Assets/DemoVikings/Scripts/GameManagerVik.cs" Line="17" Column="99" />
       <File FileName="Assets/VikingCollisiontest.cs" Line="1" Column="1" />
       <File FileName="Assets/NPCRoamingTest.cs" Line="15" Column="15" />
-      <File FileName="Assets/TinyWarrior/Parallax/Scripts/Button1.cs" Line="4" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
